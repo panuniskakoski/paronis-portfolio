@@ -1,19 +1,19 @@
 :root{
     --mainColor:#eaeaea;
-    --secondaryColor:#fff;
-    --navBarColor:#f2fff8;
+    --secondaryColor:#0E0008;
+    --navBarColor:#311823;
     
-    --borderColor:#cce0d8;
+    --borderColor:#0E0008;
     --imgBorderColor:#aebfb8;
     
-    --mainText:#464a4a;
+    --mainText:#ECC7DC;
     --secondaryText:#4b5156;
     
     --themeDotBorder:#24292e;
     
     --previewBg:rgb(251, 249, 243, 0.8);
     
-    --bgColor:#deffee;
+    --bgColor:#280017;
     
     --previewShadow:#dff0e7;
     
