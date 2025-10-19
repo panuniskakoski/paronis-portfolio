@@ -101,7 +101,7 @@ footer{ border-top: 1px solid var(--par-line); margin-top: var(--space-4); paddi
   background: color-mix(in srgb, var(--par-card) 50%, transparent); /* ≈ 0.9 opacity */
   background-image: url("images/seamless-subtle-texture-17.jpg");
   background-repeat: repeat;
-  opacity:.05;
+  opacity:.1;
 }
 .card > *{ position: relative; z-index:1; }
 
