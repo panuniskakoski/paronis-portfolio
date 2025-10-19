@@ -1,385 +1,440 @@
 <!DOCTYPE html>
-<html>
-    
-<script language="Javascript">
-    window.onload=function(){
-    var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
-    if (mobile) {
-        alert("Please, visit this page on a computer for better view!");              
-    } else {
-
-    }
-  }
-</script>
-    
+<html lang="en">
 <head>
-    <title>Paronis portfolio</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"\>
-    
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Staatliches&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" type="text/css" href="default.css">
-    
-</head>    
+  <meta charset="utf-8" />
+  <title>Paronis — Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Panu Niskakoski — 2D/3D artist, animator, game designer, and audio producer from Finland." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+
+  <!-- Your original stylesheet (kept) -->
+  <link rel="stylesheet" href="modern.css">
+
+  <!-- Social sharing (update image URL if needed) -->
+  <meta property="og:title" content="Paronis — Portfolio" />
+  <meta property="og:description" content="2D/3D art, game design, audio, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/header.PNG" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Modern, mobile-first CSS (keeps your default.css; this augments/overrides lightly) -->
+  <style>
+    /* ==== Tokens (now mapped to your palette with safe fallbacks) ==== */
+    :root{
+      /* From your CSS (with fallbacks) */
+      --par-bg: var(--bgColor, #0d0d0f);
+      --par-fg: var(--mainText, #f5f5f7);
+      --par-muted: var(--secondaryText, #a0a0aa);
+      --par-accent: #D861A6; /* your link color */
+      --par-card: var(--secondaryColor, #141418);
+      --par-line: var(--imgBorderColor, #23232b);
+
+      /* Layout + radii */
+      --radius: 14px; --radius-sm: 10px;
+      --space-1: clamp(8px, 0.6vw, 12px);
+      --space-2: clamp(12px, 1vw, 18px);
+      --space-3: clamp(16px, 1.4vw, 24px);
+      --space-4: clamp(24px, 2.2vw, 36px);
+      --content: 1120px;
+    }
+
+    /* ===== Base ===== */
+    html{scroll-behavior:smooth}
+    html,body{height:100%}
+    body{margin:0; color:var(--par-fg); background:var(--par-bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-size: clamp(15px, 1.1vw + .2rem, 18px); line-height:1.6;
+    }
+    img{max-width:100%; height:auto; display:block}
+    a{color:var(--par-accent); text-decoration:underline; text-underline-offset:2px}
+    a:focus-visible, button:focus-visible{outline:2px solid var(--par-accent); outline-offset:2px; border-radius:6px}
+    h1,h2,h3{font-family:"Staatliches", system-ui; letter-spacing:.5px; margin:.6em 0 .3em; line-height:1.15}
+    h1{font-size:clamp(2rem, 3.2vw, 2.6rem)}
+    h2{font-size:clamp(1.6rem, 2.4vw, 2rem)}
+    h3{font-size:clamp(1.2rem, 1.8vw, 1.4rem)}
+    .muted{color:var(--par-muted)}
+
+    header, main, footer{max-width:var(--content); margin:auto; padding:var(--space-3)}
+    footer{border-top:1px solid var(--par-line); margin-top:var(--space-4); padding-bottom:var(--space-4)}
+
+    /* ===== Utilities you can re-use anywhere ===== */
+    .container{max-width:var(--content); margin-inline:auto; padding:var(--space-3)}
+    .stack > * + *{margin-top: var(--space-2)}
+    .cluster{display:flex; gap:var(--space-2); align-items:center; flex-wrap:wrap}
+    .grid{display:grid; gap:var(--space-3)}
+    @media (min-width: 900px){ .grid.cols-2{grid-template-columns: 360px 1fr} }
+    .visually-hidden{position:absolute!important; height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px); white-space:nowrap}
+
+    /* Cards & media */
+    .card{background:var(--par-card); border:1px solid var(--par-line); border-radius:var(--radius); padding:var(--space-3)}
+    .thumb{border-radius:var(--radius-sm)}
+    .thumb.aspect{aspect-ratio:16/9; object-fit:cover}
+
+    /* Buttons (reusable) */
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .9rem; border-radius:10px; border:1px solid var(--par-line); text-decoration:none}
+    .btn--primary{background:var(--par-accent); color:#0b0b0e; border-color:transparent}
+
+    /* Nav (mobile-first) */
+    nav.primary{display:flex; justify-content:space-between; align-items:center; gap:var(--space-2); flex-wrap:wrap}
+    .brand{display:flex; align-items:center; gap:var(--space-2)}
+    .brand img{height:36px; width:auto}
+    .nav-toggle{background:transparent; border:1px solid var(--par-line); color:var(--par-fg); padding:8px 10px; border-radius:10px}
+    .nav-links{--_disp:none; display:var(--_disp); width:100%}
+    .nav-links ul{list-style:none; margin:0; padding:var(--space-2) 0; display:flex; flex-direction:column; gap:10px}
+    .nav-links a{display:block; padding:8px 6px; border-radius:8px}
+    .nav-links a:hover{background:rgba(255,255,255,.04)}
+    .nav-links[data-open="true"]{--_disp:block}
+    @media (min-width: 820px){
+      .nav-toggle{display:none}
+      .nav-links{display:block; width:auto}
+      .nav-links ul{flex-direction:row; gap:var(--space-2); padding:0}
+    }
+
+    /* Posts grid */
+    .posts{display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:var(--space-2)}
+    .post-card h3{margin-top:var(--space-2)}
+
+    /* Badges */
+    .pill{display:inline-block; padding:.35rem .6rem; border:1px solid var(--par-line); border-radius:999px; font-size:.9em}
+
+    /* Contact */
+    .contact a{display:inline-block; margin:6px 8px}
+
+    /* Motion */
+    @media (prefers-reduced-motion:no-preference){
+      .card{transition:transform .2s ease, background .2s ease}
+      .card:hover{transform:translateY(-2px); background:color-mix(in srgb, var(--par-card) 94%, white)}
+    }
+
+    /* Light theme (opt-in) */
+    [data-theme="light"]{--par-bg:#fafafa; --par-fg:#0e0e10; --par-muted:#555; --par-card:#ffffff; --par-line:#e6e6ef}
+  </style>
+</head>
 <body>
-    
-    <section class="s1">
-        <div class="main-container">
-            <div class="greeting-wrapper" >
-                <img id="promo_poster" src="images/header.PNG">
-            </div>
-            
-            <br>
-            
-            <div class="intro-wrapper">
-                <div class="nav-wrapper">
-                    <ul id="home-nav">
-                        <li><img id="blanca_icon" src="images/logo.png"></li>
-                        <li><a href="#">Home</a></li>
-                    </ul> 
-                    
-                    <ul id="navigation">
-                        <li><a href="#about-me">About</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>                    
-                </div> 
-                
-                <div class="left-column" id="about-me" class="about-wrapper">
-                    <img id="profile_pic" src="images/profilePic.png">
-                    <h3 style="text-align: center;line-height: 0">Hello.</h3>
-                    
-                    <p id="introduction-note">My name is Panu Niskakoski<br>and I'm a passionate game dev / <br> entrepreneur from Finland.</p>
+  <a id="top" class="visually-hidden" aria-hidden="true"></a>
+  <header>
+    <div class="hero" role="img" aria-label="Portfolio header image">
+      <img src="images/header.PNG" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 90vw, 1100px">
+    </div>
 
-                </div> 
-                
-                <div class="right-column" >
-                
-                    <p>I am an <b>IT graduate from University of Jyväskylä</b> and the <b>CEO & lead game designer</b> of a new game studio called Herra Koira Company (founded in July 2023).</p>
-                    
-                    <p>I've worked as a game artist at <b>Unibyte
-                    Studios</b> (since summer of 2019-2023). I provide all the
-                    graphical bits and pieces from game assets to 
-                    marketing material. I also produce game music and SFX.</p>
-                
-                    <p>In addition I have done <b>freelance</b> work. I have made a little bit of everything; 3D modeling, band shirts, skateboard designs, company logos and social media assets.</p> 
-                </div>             
-            </div>
-            
-            <br>
-        
-            
-            <div class="greeting-wrapper" >
-                <img id="promo_poster" src="images/1A-teaser.PNG">
-            </div>            
-            
-            
-            <br>
-            
-        </div>
+    <nav class="primary" aria-label="Primary">
+      <div class="brand">
+        <img src="images/logo.png" alt="Paronis logo" loading="lazy" decoding="async" />
+        <a href="#top" aria-label="Go to top">Home</a>
+      </div>
+      <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false">Menu</button>
+      <div id="nav-links" class="nav-links" data-open="false">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- About -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="card">
+        <img class="thumb" src="images/profilePic.png" alt="Profile thumbnail">
+        <h2 id="about-title" style="text-align:center; line-height:1">Sup.</h2>
+          <p>My name is <strong>Panu 'paroni' Niskakoski</strong> and I'm a <strong>mixed-media artist</strong> and a <strong>game developer</strong> from Finland.</p>
+        <p>I have <strong>over 6 years</strong> of work experience in <strong>game development</strong> both as an entrepreneur and as an employ. </p>
+        <p>I also do all sorts of mixed-media work as a <strong>freelancer</strong> and I have a <strong>master's degree</strong> in Information Technology.</p>
+        <p>Welcome to my portfolio page.</p>
+      </div>
     </section>
-    
-    <section class="s2">
-        <div class="main-container">
-            
-            <div id="about-me" class="about-wrapper">
-                <div class="about-me">
-                
-                    <h3>Top expertise</h3>
-                
-                    <p>I am a 2D / 3D artist and animator, but I have also a bunch of experience in game design, sound production and development. I've also done testing and QA.</p> 
-                    
-                    <p>Check out my portfolio highlights (January 2024) in a handy PDF-form: <a target="_blank" href="https://drive.google.com/file/d/1adTFiJ1h-pDlCUoXrIPbkjZ6sgw4aIHW/view?usp=sharing">HIGHER_RES FULL (Google Drive)</a> || <a target="_blank" href="ParonisPortfolio_2023_COMPRESSED.pdf">COMPRESSED FULL PORTFOLIO</a> || <a target="_blank" href="paronis_3D_Portfolio_ENG_COMPRESSED.pdf">COMPRESSED 3D ONLY PORTFOLIO</a>.</p>
 
-                    <p>Take a peek at my YouTube portfolio <a target="_blank" href="https://www.youtube.com/playlist?list=PLBJpoE6BqN04jDoeoICYnTik6OGNANmDt">HERE</a>.</p>
-                    
-                    <p>Download my resume (updated January 2024) in <a target="_blank" href="CV_2023_ENG.pdf">ENG</a> or in <a target="_blank" href="CV_2023_FIN.pdf">FIN</a>.</p>                     
-
-
-
-
-                </div>
-                
-                
-                <div class="social-links">
-                    
-                    <h3>Skills</h3>                    
-                    <div id="skills">
-                        <ul>
-                            <li>Unity</li>
-                            <li>Game Maker studio</li>
-                            <li>GitHub / GitLab</li>
-                            <li>C# / Java</li>
-                            <li>JavaScript</li>
-                            <li>HTML / CSS</li>
-                        </ul>
-
-                        <ul>
-                            <li>Procreate</li>
-                            <li>Blender</li>
-                            <li>Aseprite</li>
-                            <li>Reaper</li>
-                            <li>Audacity / Garage band</li>
-                            <li>Trello / Asana</li>
-                        </ul>
-                    </div>
-                    
-                    
-                    
-                </div>
-            </div>
-        </div>
+    <!-- Poster -->
+    <section aria-label="Promo poster" style="margin-top:24px;">
+      <img class="thumb" src="images/1A-teaser.PNG" alt="Promo thumbnail">
     </section>
-    
-    <section id="portfolio" class="s1">
-        <div class="main-container">
-            <h3 style="text-align: center;">Highlights of my past projects</h3>
-            
-            <div class="post-wrapper">
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/PWYC_thumbnail.PNG">
-                        <div class="post-preview">
-                            <h6 class="post-title">Play With Your Cat! (company 2023-)</h6>
-                            <p class="post-intro">A multiplatform virtual toy box for you and your cat. Grab a controller and get ready for interspecies fun!</p>
-                            <a target="_blank" href="https://www.youtube.com/watch?v=i7fimc0iOBw">Releasing soon</a>
-                        </div>
-                    </div>
-                </div>  
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/ST_thumbnail_cut.PNG">
-                        <div class="post-preview">
-                            <h6 class="post-title">Spirit Trials (company 2022-2023)</h6>
-                            <p class="post-intro">Unibyte Studios new game, which is on beta release at the moment. We whipped this up quite quickly.</p>
-                            <a href="spirit-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div> 
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/terp_thumbnail.PNG">
-                        <div class="post-preview">
-                            <h6 class="post-title">Terramorphers (company 2019-2022)</h6>
-                            <p class="post-intro">Magnum opus of my portfolio. Unibyte Studios game that we have been working on since summer 2019.</p>
-                            <a href="terramorphers-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/kitty_thumbnail.PNG">
-                        <div class="post-preview">
-                            <h6 class="post-title">Kitty (solo 2023)</h6>
-                            <p class="post-intro">Simple endless runner game where you play as a kitty trapped in an ongoing helicopter.</p>
-                            <a href="kitty-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>                
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/cm_thumbnail.PNG">
-                        <div class="post-preview">
-                            <h6 class="post-title">Chicken Manager (team jam 2022)</h6>
-                            <p class="post-intro">48h game jam prototype, where you work as a chicken farmer. Produce poultry goods and expand.</p>
-                            <a href="cm-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>               
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/walk_thumbnail.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">A walk in the park (solo 2021)</h6>
-                            <p class="post-intro">Fun memey mobile game for Android devices. Started as a school project which I took a bit further.</p>
-                            <a href="walk-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                
-                
 
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/cube_thumbmnail.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Cube VR (solo 2021)</h6>
-                            <p class="post-intro">Escape room styled VR puzzle game for Oculus devices. Started as a school project which I took a bit further.</p>
-                            <a href="cubevr-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/spaceVac_thumbnail.PNG">
-                        <div class="post-preview">
-                            <h6 class="post-title">Space Vac (team 2019)</h6>
-                            <p class="post-intro">A school project game proto. I made all the graphics for the game. Really liked the character designs.</p>
-                            <a href="spacevac-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/math_thumbnail.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Running Math (solo 2020)</h6>
-                            <p class="post-intro">A prototype of gamificated math game. Platforming and math quizs! Started as a school project.</p>
-                            <a href="math-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/snake_thumbnail.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Phaser Snake (solo 2021)</h6>
-                            <p class="post-intro">Old school Nokia 3310 Snake II knock-off made with Phaser. Playable with browser on itch.io.</p>
-                            <a href="snake-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>                
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/ponger_thumbnail.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Ponger (solo 2021)</h6>
-                            <p class="post-intro">A simple prototype of a 4-paddle pong game you can play by yourself. Made with Godot game engine.</p>
-                            <a href="ponger-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>   
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/dev_thumbnail.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Dev_olution (solo 2020)</h6>
-                            <p class="post-intro">My very first Unity game. My main focus of the project was to train frame-by-frame animation skills.</p>
-                            <a href="dev-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>   
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/blanca_thumbnail.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Blanca simulator (solo 2019)</h6>
-                            <p class="post-intro">A teeny tiny application where I modelled our former apartment with pixel art. You play as white kitty Blanca.</p>
-                            <a href="blanca-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>   
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/party_thumbnail.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Road to Space party (solo 2018)</h6>
-                            <p class="post-intro">My very first prototype with Game Maker Studio 2. You'll play as a dude trying to find the epic Space party.</p>
-                            <a href="party-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div> 
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/freelance_thumb.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Freelance gigs (solo 2018-)</h6>
-                            <p class="post-intro">Highlights from my freelance gigs. Prints, logos, diagrams, marketing material and shirt designs.</p>
-                            <a href="freelance-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/fun_thumbnail.PNG">
-                        <div class="post-preview">
-                            <h6 class="post-title">Just for fun (solo 2017-)</h6>
-                            <p class="post-intro">These were done just because doing stuff is fun. Bunch of art, song covers and projects.</p>
-                            <a href="fun-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div> 
-                
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/music_thumbnail.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Audio by me (solo 2020-)</h6>
-                            <p class="post-intro">Collection of different audio pieces I have produced. Varies from music to dialogue.</p>
-                            <a href="music-post.html">Read more</a>
-                        </div>
-                    </div>
-                </div>                 
-                
-              
-                
-            </div>
-        </div>
-    </section>
-    
-    <!-- Optional info, tee oma sivu näille
-    <section class="s2">
-        <div class="main-container">
-            
-            <div id="about-me" class="about-wrapper">
-                <div class="social-links">
-                    <img id="social_img" src="images/freelance/carrotten.PNG">
-                    <h3>This time you'll get<br>a galactic carrot.</h3>
-                </div>
-                
-                <div class="about-me">
-                    <h4>More about me as a developer</h4>
-                    
+    <!-- Expertise & Skills -->
+    <section class="grid" style="margin-top:24px;" aria-labelledby="expertise-title">
+      <div class="card">
+        <h2 id="expertise-title">TOP EXPERTISE</h2>
+        <p>In essence I am a generalist. My main thing is 2D art, but I've done plenty of 3D as well. I do level & game design (docs + spreadsheets included), sound production, video editing and particle effects. I can help with config stuff and I know some programming. Aaaand I'm always the one who plays the game the most and knows the project inside out. So testing and QA also.</p>
+        <p>Through entrepreneurship and my work as a CEO in my own company, I've also learned a thing or two about business. Though I hate all the corporate bureaucracy — bleh. In a beautiful world one could just focus on the development.</p>
+        <p>Check out my nifty, scrollable PDF portfolio below <i>(last updated January 2024)</i>:
+          <br/>
+          <a target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1adTFiJ1h-pDlCUoXrIPbkjZ6sgw4aIHW/view?usp=sharing">HIGHER_RES FULL (Google Drive)</a>
+          &nbsp;||&nbsp;
+          <a target="_blank" rel="noopener noreferrer" href="ParonisPortfolio_2023_COMPRESSED.pdf">COMPRESSED FULL PORTFOLIO</a>
+          &nbsp;||&nbsp;
+          <a target="_blank" rel="noopener noreferrer" href="paronis_3D_Portfolio_ENG_COMPRESSED.pdf">COMPRESSED 3D ONLY PORTFOLIO</a>
+        </p>
+        <p>Peek at my YouTube portfolio for all things video in <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/playlist?list=PLBJpoE6BqN04jDoeoICYnTik6OGNANmDt">here</a>.</p>
+        <p>Download my resume <i>(last updated January 2024)</i>: <a target="_blank" rel="noopener noreferrer" href="CV_2023_ENG.pdf">ENG</a> / <a target="_blank" rel="noopener noreferrer" href="CV_2023_FIN.pdf">FIN</a>.</p>
+      </div>
 
-                    
-                    <p>What pulls me most towards game development are the many fields it contains. I like to do all my game assets by myself (<b>graphics and audio</b>) just for the fun of it. Even though graphics are my expertise, I am very much willing to learn more about <b>game music, SFX and voice acting</b>. Same goes for <b>animation and 3D modelling</b>. Variety in interesting tasks is the main reason I am very interested in indie development. I won't be automatically locked to a single creative sector of game development.</p>
-                
-                    <p>As a team member, I work hard, I like to schedule my tasks and I keep to deadlines. <b>I assume same level of devotion from rest of the team</b>. After all, I (and most likely you too) am trying to make a decent living by developing games.</p>
-                    
-                    <p>I am very open to different game genres and I'm very willing to try out different kind of art styles. But as you can see from my earlier work, <b>creepy and cartoony</b> are propably the best words to interpret my organic style. I like to mix horror with goofyness. One should not take life too seriously.</p>                    
-                
-                    <p>My dream job would be developing smaller indie games for desktop computers and consoles. Games forked around 1-25€ of pricepoint. Influencal indie studios would be <a target="_blank" href="https://www.thebehemoth.com/">The Behemoth</a> and <a target="_blank" href="https://www.klei.com/">Klei Entertainment</a>.</p>
-                    
-                    <p>I am also interested in freelance work. Send me an email if interested.</p> 
-                </div>
-            </div>
-        </div>
+      <div class="card">
+  <h2 class="skills-title">SKILLS</h2>
+    
+  <div class="skills-grid">
+    <span class="skill">Unreal Engine 5.4</span>
+    <span class="skill">Unity</span>
+    <span class="skill">Game Maker Studio</span>
+    <span class="skill">GitHub</span>
+    <span class="skill">Perforce</span>
+    <span class="skill">Procreate</span>
+    <span class="skill">Blender</span>
+    <span class="skill">VEGAS Pro</span>
+    <span class="skill">Aseprite</span>
+    <span class="skill">Reaper</span>
+    <span class="skill">GarageBand</span>
+    <span class="skill">Audacity</span>
+    <span class="skill">Hack'n Plan</span>
+    <span class="skill">Trello / Hack’n Plan</span>
+    <span class="skill">HTML / CSS</span>
+    <span class="skill">C#</span>
+    <span class="skill">Java</span>
+    <span class="skill">JavaScript</span>
+  </div>
+</div>
     </section>
-     -->
-    
-    <section id="contact" class="s2">
-        <div class="main-container" style="text-align: center;">
-            <h3><u>Get in touch</u></h3>
-            <p>The best way to reach me is by email.</p>
-            <h4>paroni.does@gmail.com</h4>
-            <p>Check out my other social media accounts and such.</p>
-            <h4><a target="_blank" href="https://www.linkedin.com/in/panu-niskakoski-43b6ba158/">LinkedIn</a></h4>
-            <h4><a target="_blank" href="https://www.youtube.com/@panuniskakoski5289/videos">YouTube</a></h4>
-            <h4><a target="_blank" href="https://github.com/panuniskakoski">GitHub</a></h4>
-            <h4><a target="_blank" href="https://www.instagram.com/paroni.does.doodle/">Instagram</a></h4>
-        </div>
+
+      <br>
+    <!-- Portfolio -->
+    <section id="portfolio" style="margin-top:24px;" aria-labelledby="portfolio-title">
+      <h2 id="portfolio-title" style="text-align:center;">~ HIGHLIGHTS ~</h2>
+      <br>
+      <div class="posts" role="list">
+        <!-- Repeatable post card pattern -->
+          
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/zorag_thumbnail.PNG" alt="Zorag's Morphing Mountain thumbnail">
+          <h3>Morphing Mountain</h3>
+          <h4>[ Pre-production ]</h4>
+          <h4>Owner, Designer & Artist</h4>
+          <p>A social interaction focused dungeon crawler RPG based on 80's fantasy board games. A multi-platform freemium game.</p>
+          <p><a href="">Non-shall pass</a></p>
+        </article>            
+          
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/goblinsDie_thumbnail.PNG" alt="Goblin's Die thumbnail">
+          <h3>Goblin's Die</h3>
+          <h4>[ Commercial 2024 – ]</h4>
+          <h4>Generalist & Artist</h4>
+          <p>An Action-Adventure RPG with a hint of 90’s PC games. Explore, Scavenge, Craft & Eliminate. Released on Steam.</p>
+          <p><a href="goblins-post.html">Read more</a></p>
+        </article>          
+          
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/PWYC_thumbnail.PNG" alt="Play With Your Cat! thumbnail">
+          <h3>Play With Your Cat!</h3>
+          <h4>[ Commercial 2023–2025 ]</h4>
+          <h4>Owner, CEO, Designer & Artist</h4>
+          <p>A multiplatform virtual toy box for you and your cat. Based on my master's thesis. Released on Steam & Google Play Store.</p>
+          <p><a href="spirit-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/ST_thumbnail.PNG" alt="Spirit Trials thumbnail">
+          <h3>Spirit Trials</h3>
+          <h4>[ Commercial 2022–2023 ]</h4>
+          <h4>Owner & Artist</h4>
+          <p>A freemium survival style rogue-lite game on mobile. Unibyte Studios last release. Released on Google Play Store.</p>
+          <p><a href="spirit-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/terp_thumbnail.PNG" alt="Terramorphers thumbnail">
+          <h3>Terramorphers</h3>
+          <h4>[ Commercial 2019–2022 ]</h4>
+          <h4>Owner & Artist</h4>
+          <p>A freemium turn-based tactical RPG on mobile. Gained over 135k installs & 52k revenue. My first commercial game.</p>
+          <p><a href="terramorphers-post.html">Read more</a></p>
+        </article>
+          
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/freelance_thumb.PNG" alt="Freelance Gigs thumbnail">
+          <h3>Freelance gigs</h3>
+          <h4>[ Misc Art 2018 - ]</h4>
+          <h4>Solo</h4>
+          <p>3D modeling, patches, prints, logos, diagrams, marketing material, and shirt designs.</p>
+          <p><a href="freelance-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/fun_thumbnail.PNG" alt="Just For Fun thumbnail">
+          <h3>Just For Fun</h3>
+          <h4>[ Misc 2017-present ]</h4>
+          <h4>Solo</h4>
+          <p>3D / 2D art, demos, animation and random stuff just for fun of it.</p>
+          <p><a href="fun-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/music_thumbnail.PNG" alt="Audio thumbnail">
+          <h3>Noise by Me</h3>
+          <h4>[ Audio 2020 ]</h4>
+          <h4>Solo</h4>
+          <p>Live play, music, SFX, and dialogue production samples.</p>
+          <p><a href="music-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/kitty_thumbnail.PNG" alt="Kitty Couldn't Stop thumbnail">
+          <h3>Kitty Couldn't Stop</h3>
+          <h4>[ Prototype 2023 ]</h4>
+          <h4>Solo</h4>
+          <p>Endless runner where you play as a kitty trapped in a helicopter.</p>
+          <p><a href="kitty-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/cm_thumbnail.PNG" alt="Chicken Manager thumbnail">
+          <h3>Chicken Manager</h3>
+          <h4>[ Team Jam Game 2023 ]</h4>
+          <h4>Designer & Artist</h4>
+          <p>48h game jam prototype: produce poultry goods and expand.</p>
+          <p><a href="cm-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/walk_thumbnail.PNG" alt="Walk in the Park thumbnail">
+          <h3>A Walk in the Park</h3>
+          <h4>[ Prototype 2021 ]</h4>
+          <h4>Solo</h4>
+          <p>Memey mobile game for Android. Started as a school project.</p>
+          <p><a href="walk-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/cube_thumbmnail.PNG" alt="Cube VR thumbnail">
+          <h3>Cube VR</h3>
+          <h4>[ Prototype 2021 ]</h4>
+          <h4>Solo</h4>
+          <p>Escape room styled VR puzzle game for Oculus devices.</p>
+          <p><a href="cubevr-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/spaceVac_thumbnail.PNG" alt="Space Vac thumbnail">
+          <h3>Space Vac</h3>
+          <h4>[ School Team 2019 ]</h4>
+          <h4>Artist</h4>
+          <p>A school project prototype. I made all the graphics.</p>
+          <p><a href="spacevac-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/math_thumbnail.PNG" alt="Running Math thumbnail">
+          <h3>Running Math</h3>
+          <h4>[ Prototype 2020 ]</h4>
+          <h4>Solo</h4>
+          <p>Prototype of a gamified math game. Platforming and quizzes!</p>
+          <p><a href="math-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/snake_thumbnail.PNG" alt="Phaser Snake thumbnail">
+          <h3>Phaser Snake</h3>
+          <h4>[ Prototype 2021 ]</h4>
+          <h4>Solo</h4>
+          <p>Nokia 3310 Snake II homage made with Phaser. Playable on itch.io.</p>
+          <p><a href="snake-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/ponger_thumbnail.PNG" alt="Ponger thumbnail">
+          <h3>Ponger</h3>
+          <h4>[ Prototype 2021 ]</h4>
+          <h4>Solo</h4>
+          <p>4‑paddle pong prototype made with Godot.</p>
+          <p><a href="ponger-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/dev_thumbnail.PNG" alt="Dev_olution thumbnail">
+          <h3>Dev_olution</h3>
+          <h4>[ Prototype 2020 ]</h4>
+          <h4>Solo</h4>
+          <p>My first Unity game; focused on frame‑by‑frame animation.</p>
+          <p><a href="dev-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/blanca_thumbnail.PNG" alt="Blanca Simulator thumbnail">
+          <h3>Blanca simulator</h3>
+          <h4>[ Prototype 2019 ]</h4>
+          <h4>Solo</h4>
+          <p>Pixel‑art model of our former apartment. Play as kitty Blanca.</p>
+          <p><a href="blanca-post.html">Read more</a></p>
+        </article>
+
+        <article class="post-card card" role="listitem">
+          <img class="thumb" src="images/party_thumbnail.PNG" alt="Road to Space Party thumbnail">
+          <h3>Road to Space Party</h3>
+          <h4>[ Prototype 2018 ]</h4>
+          <h4>Solo</h4>
+          <p>My first Game Maker Studio 2 prototype.</p>
+          <p><a href="party-post.html">Read more</a></p>
+        </article>
+      </div>
     </section>
-    
-    <script type="text/javascript" src="script.js"></script>
-    
+
+    <!-- Contact -->
+    <section id="contact" class="card" style="margin-top:24px; text-align:center;" aria-labelledby="contact-title">
+      <h2 id="contact-title"><u>Get in touch</u></h2>
+      <p>The best way to reach me is by email.</p>
+      <p><a class="contact" href="mailto:paroni.does@gmail.com">paroni.does@gmail.com</a></p>
+      <p>Find me also on:</p>
+      <p class="contact">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/panu-niskakoski-43b6ba158/">LinkedIn</a> ·
+        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@panuniskakoski5289/videos">YouTube</a> ·
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/panuniskakoski">GitHub</a> ·
+        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/paroni.does.juttuja/">Instagram</a>
+      </p>
+    </section>
+  </main>
+
+  <footer aria-label="Site footer">
+    <p class="muted">© <span id="year"></span> Panu Niskakoski</p>
+  </footer>
+
+  <!-- Tiny inline scripts: a11y-safe, no UA sniff or alerts  -->
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle (reusable pattern)
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links){
+      toggle.addEventListener('click', () => {
+        const open = links.getAttribute('data-open') === 'true';
+        links.setAttribute('data-open', String(!open));
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+    }
+  </script>
+  <!-- If you have extra scripts, keep them deferred -->
+  <!-- <script src="script.js" defer></script> -->
+
+  <!-- Schema.org Person (optional; update as needed) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Panu Niskakoski",
+    "jobTitle": "Game Artist & Designer",
+    "email": "mailto:paroni.does@gmail.com",
+    "url": "https://panuniskakoski.github.io/",
+    "sameAs": [
+      "https://www.linkedin.com/in/panu-niskakoski-43b6ba158/",
+      "https://github.com/panuniskakoski",
+      "https://www.youtube.com/@panuniskakoski5289",
+      "https://www.instagram.com/paroni.does.juttuja/"
+    ]
+  }
+  </script>
 </body>
-    
 </html>
