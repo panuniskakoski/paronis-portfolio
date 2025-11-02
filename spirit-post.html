@@ -1,386 +1,212 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Paronis portfolio: Spirit Trials</title>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spirit Trials · Portfolio</title>
+  <meta name="description" content="Casual roguelite bullet‑hell RPG for mobile. I handled all graphics, marketing art, UI images, and produced the soundtrack and voice work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Staatliches&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="modern.css" />
+  <meta property="og:title" content="Spirit Trials · Portfolio" />
+  <meta property="og:description" content="Roguelite bullet‑hell RPG on mobile. Graphics, marketing art, UI, soundtrack, and voice work by me." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/ST_thumbnail.PNG" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    /* reuse the same helpers from the template above */
+    .proj-hero{display:grid;gap:1rem;align-items:end}
+    .proj-hero__media{aspect-ratio:16/9;border-radius:14px;overflow:hidden}
+    .proj-hero__badges{display:flex;flex-wrap:wrap;gap:.5rem}
+    .badge{padding:.35rem .6rem;border-radius:999px;font-size:.9rem;line-height:1;border:1px solid var(--par-line)}
+    .grid{display:grid;gap:1.25rem}
+    .grid--2{grid-template-columns:1fr}
+    .embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden}
+    .embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.75rem}
+    .gallery figure{border-radius:.75rem;overflow:hidden}
+    @media (min-width:900px){.grid--2{grid-template-columns:1.2fr .8fr}.proj-hero{grid-template-columns:1fr .9fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="primary" aria-label="Primary">
+      <div class="brand">
+        <img src="images/logo.png" alt="Paronis logo" loading="lazy" decoding="async" />
+        <a href="index.html#top">Home</a>
+      </div>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"\>
+      <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false">Menu</button>
 
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Staatliches&display=swap" rel="stylesheet">
+      <div id="nav-links" class="nav-links" data-open="false">
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#portfolio">Portfolio</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-        <link rel="stylesheet" type="text/css" href="default.css">
+  <main class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin:.5rem 0 1rem">
+      <a href="index.html#portfolio">← Back to projects</a>
+    </nav>
 
-    </head>
-    <body>
-        <div class="nav-wrapper">
-            <ul id="home-nav">
-                <li><img id="blanca_icon" src="images/logo.png"></li>
-                <li><a href="index.html#top">Home</a></li>
-            </ul> 
-
-            <ul id="navigation">
-                <li><a href="index.html#about-me">About</a></li>
-                <li><a href="index.html#portfolio">Portfolio</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>                    
-        </div> 
+    <!-- HERO -->
+    <section aria-label="Promo poster">
+      <img class="thumb" src="images/ST_thumbnail_cut.PNG" alt="Promo thumbnail">
+    </section>
+    
+    <section class="proj-hero section">
+      <div class="card">
+        <h1>~ Spirit Trials ~</h1>
+        <p class="lead">Casual roguelite bullet‑hell RPG for mobile.</p>
+        <div class="proj-hero__badges">
+          <span class="badge">Owner & Artist</span>
+          <span class="badge">Commercial 2022–2023</span>
+          <span class="badge">Mobile · F2P</span>
+        </div>
         
+        <div class="actions" style="margin-top:.75rem">
+          <a class="btn btn--primary" target="_blank" rel="noopener" href="https://play.google.com/store/search?q=spirit%20trials&c=apps">Play Store</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLBJpoE6BqN04jDoeoICYnTik6OGNANmDt">Video playlist</a>
+        </div>
+      </div>
+    </section>
+
+    <br>
+    
+    <!-- OVERVIEW -->
+    <section class="grid grid--2 section">
+      <article class="card">
+        <h2>Overview</h2>
+        <p>We at <em>Unibyte Studios</em> worked on <strong>Spirit Trials</strong> from fall 2022 to spring 2023. I handled all graphics for the project—including Play Store art, icons, and most UI imagery—plus composed, recorded, and mixed the soundtrack, and voiced/produced character and boss dialogue.</p>
+        <h3>Key contributions. Recorded and edited all game trailers as well.</h3>
+        <ul>
+          <li>2D art direction, all in‑game graphics and marketing art</li>
+          <li>UI imagery & icon sets; collaboration on layouts</li>
+          <li>Original soundtrack, SFX polish, and voice production</li>
+        </ul>
+        <h3>Outcomes</h3>
+        <ul>
+          <li>Playable release on Google Play</li>
+          <li>Trailer and multiple update videos shipped</li>
+        </ul>
+      </article>
+      <aside class="card">
+        <h2>Featured video</h2>
+        <div class="embed"><iframe src="https://www.youtube.com/embed/liaTtJ7vOGE" title="Spirit Trials trailer" loading="lazy" allowfullscreen></iframe></div>
+      </aside>
+    </section>
+
+    <br>
+    
+    <!-- GALLERY 1 -->
+    <section class="section gallery-wide">
+      <h2 class="centered">Personal highlights</h2>
+      <div class="gallery">
+        <figure class="card"><img src="images/spirit/ps1.PNG" alt="Promo screen 1"></figure>
+        <figure class="card"><img src="images/spirit/ps3.PNG" alt="Promo screen 3"></figure>
+        <figure class="card"><img src="images/spirit/ps2.PNG" alt="Promo screen 2"></figure>
+        <figure class="card"><img src="images/spirit/characters2.PNG" alt="Characters sheet"></figure>
+        <figure class="card"><img src="images/spirit/hub.PNG" alt="Hub view"></figure>
+        <figure class="card"><img src="images/spirit/enemies4.PNG" alt="Enemies set 4"></figure>
+        <figure class="card"><img src="images/spirit/characters1.PNG" alt="Characters set 1"></figure>
+        <figure class="card"><img src="images/spirit/maps.PNG" alt="Maps"></figure>
+        <figure class="card"><img src="images/spirit/bosses4.PNG" alt="Bosses set 4"></figure>
+        <figure class="card"><img src="images/spirit/npc3.PNG" alt="NPCs 3"></figure>
+        <figure class="card"><img src="images/spirit/tilemaps1.PNG" alt="Tilemaps 1"></figure>
+        <figure class="card"><img src="images/spirit/enemies3.PNG" alt="Enemies set 3"></figure>
+        <figure class="card"><img src="images/spirit/npc1.PNG" alt="NPCs 1"></figure>
+        <figure class="card"><img src="images/spirit/tilemaps2.PNG" alt="Tilemaps 2"></figure>
+        <figure class="card"><img src="images/spirit/bosses3.PNG" alt="Bosses set 3"></figure>
+        <figure class="card"><img src="images/spirit/npc2.PNG" alt="NPCs 2"></figure>
+        <figure class="card"><img src="images/spirit/chests.PNG" alt="Chests"></figure>
+        <figure class="card"><img src="images/spirit/enemies2.PNG" alt="Enemies set 2"></figure>
+        <figure class="card"><img src="images/spirit/items.PNG" alt="Items"></figure>
+        <figure class="card"><img src="images/spirit/bosses2.PNG" alt="Bosses set 2"></figure>
+        <figure class="card"><img src="images/spirit/icons.PNG" alt="Icons"></figure>
+        <figure class="card"><img src="images/spirit/currencies.PNG" alt="Currencies"></figure>
+        <figure class="card"><img src="images/spirit/enemies1.PNG" alt="Enemies set 1"></figure>
+        <figure class="card"><img src="images/spirit/materials.PNG" alt="Materials"></figure>
+        <figure class="card"><img src="images/spirit/staffs.PNG" alt="Staffs"></figure>
+        <figure class="card"><img src="images/spirit/bosses1.PNG" alt="Bosses set 1"></figure>
+        <figure class="card"><img src="images/spirit/abilities.PNG" alt="Abilities"></figure>
+        <figure class="card"><img src="images/spirit/conceptArt2.PNG" alt="Concept art 2"></figure>
+        <figure class="card"><img src="images/spirit/conceptArt1.png" alt="Concept art 1"></figure>        
+      </div>
+    </section>
+
+    <br>
+    
+        <section class="proj-hero section">
+      <div class="card">
+        <h1>Audio highlights</h1>
+        <p class="lead">All pieces played, recorded, and mixed by me. Character voices also voiced and edited.</p>
+
+        <br>
         
-        <section id="intro" class="s2">
-            <div class="main-container" style="text-align: center;">
-                <!-- Otsikko -->
-                <br>
-                <!-- Promo kuva -->
-                <img id="promo_poster" src="images/ST_thumbnail.PNG">
+        <div class="embed"><iframe src="https://www.youtube.com/embed/UfJ1EqJz5Pg" title="Soundtrack v0.6.11" loading="lazy" allowfullscreen></iframe></div>
+        <br>
+        <div class="embed"><iframe src="https://www.youtube.com/embed/_6XWviKTgQM" title="Dialogue v0.6.11" loading="lazy" allowfullscreen></iframe></div>
+        <br>
+        <div class="embed"><iframe src="https://www.youtube.com/embed/5-6gzfhSjV0" title="Boss voices v0.6.11" loading="lazy" allowfullscreen></iframe></div>
+        <br>
+        <div class="embed"><iframe src="https://www.youtube.com/embed/y3eoo4ZrjJE" title="Soundtrack v0.3.3" loading="lazy" allowfullscreen></iframe></div>
+        <br>
 
-                <!-- Recap -->
-                <p>We (as in <i>Unibyte Studios</i>) worked on <i>Spirit Trials</i> from fall of 2022 to spring of 2023.</p>
-                <p>The game is more casual roguelite bullet hell rpg for mobile.</p>
-                <p>I have done all the graphical elements related to the project, including all the marketing material / Play Store images and UI icons/images (excluding particle effects and UI panels and buttons).</p>
-                
-                
-                <p>I composed, recorded and mixed the soundtrack of the game. I also voiced and produced all the character and boss dialogue (+screeches).</p>
-                
-                <p>I made the trailer below as well.</p> 
-                
-                <iframe width="680" height="320"src="https://www.youtube.com/embed/liaTtJ7vOGE" fs="1"></iframe>
-                
-                <p>The best way to see all the work I've done on the game is to simply play it. Link to Play Store below. More assets and art of the game will be uploaded to my ArtStation account.</p>
-                <!-- Links -->
-                <h5><a target="_blank" href="https://play.google.com/store/search?q=spirit%20trials&c=apps">Play Store link</a></h5>            
-            </div>
-        </section>
-        
-        
-        <section id="portfolio" class="s1">
-            <div class="main-container">
-                <h3 style="text-align: center;">Personal highlights</h3>
-                
-                <div class="gallery-post-wrapper">
-                    <!-- 1. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/ps1.PNG">
-                        </div>
-                    </div>                     
-                    
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/ps3.PNG">
-                        </div>
-                    </div>                     
-                    
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/ps2.PNG">
-                        </div>
-                    </div>                      
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/characters2.PNG">
-                        </div>
-                    </div>                
+      </div>
+          
+    </section>
 
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/hub.PNG">
-                        </div>
-                    </div>
+    <br>
+    
+    <!-- PROTO ASSETS -->
+    <section class="section gallery-wide">
+      <h2 class="centered">Proto assets</h2>
+      <div class="gallery">
+        <figure class="card"><img src="images/spirit/mobs.PNG" alt="Mobs"></figure>
+        <figure class="card"><img src="images/spirit/level4.PNG" alt="Level 4"></figure>
+        <figure class="card"><img src="images/spirit/app_icons.PNG" alt="App icons"></figure>
+        <figure class="card"><img src="images/spirit/level1.PNG" alt="Level 1"></figure>
+        <figure class="card"><img src="images/spirit/level3.PNG" alt="Level 3"></figure>
+        <figure class="card"><img src="images/spirit/level2.PNG" alt="Level 2"></figure>
+      </div>
+    </section>
 
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/enemies4.PNG">
-                        </div>
-                    </div>
-                    
-                    
-                    <!-- 2. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/characters1.PNG">
-                        </div>
-                    </div>                
+    <br>
+    
+    <!-- NFT MINI STORY -->
+    <section class="section card">
+      <h2 class="centered">NFT story</h2>
+      <p>Some cyber hustlers proposed an NFT marketing scheme for our new game. Long story short: they ghosted us because “the meta changed” during Midsummer. It still made for a fun generator project designed to spit out 5k+ somewhat‑unique spirit designs.</p>
+      <div class="gallery" style="margin-top:1rem">
+        <figure class="card"><img src="images/spirit/nft1.PNG" alt="NFT set 1"></figure>
+        <figure class="card"><img src="images/spirit/nft2.PNG" alt="NFT set 2"></figure>
+        <figure class="card"><img src="images/spirit/nft3.PNG" alt="NFT set 3"></figure>
+      </div>
+    </section>
 
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/maps.PNG">
-                        </div>
-                    </div>
+    <nav class="prevnext" aria-label="Project pagination">
+      <a class="btn" href="terramorphers-post.html">← Terramorphers</a>
+      <a class="btn btn--primary" href="goblins-post.html">Goblin's Die →</a>
+    </nav>
+  </main>
 
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/bosses4.PNG">
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    <!-- 2. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/npc3.PNG">
-                        </div>
-                    </div>                
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/tilemaps1.PNG">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/enemies3.PNG">
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <!-- 2. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/npc1.PNG">
-                        </div>
-                    </div>                
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/tilemaps2.PNG">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/bosses3.PNG">
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <!-- 2. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/npc2.PNG">
-                        </div>
-                    </div>                
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/chests.PNG">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/enemies2.PNG">
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    <!-- 2. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/npc1.PNG">
-                        </div>
-                    </div>                
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/items.PNG">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/bosses2.PNG">
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    <!-- 2. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/icons.PNG">
-                        </div>
-                    </div>                
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/currencies.PNG">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/enemies1.PNG">
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    <!-- 2. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/materials.PNG">
-                        </div>
-                    </div>                
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/staffs.PNG">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/bosses1.PNG">
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    <!-- 2. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/conceptArt1.png">
-                        </div>
-                    </div>                                  
-                    
-                    
-                    <!-- 2. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/abilities.PNG">
-                        </div>
-                    </div>                
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/conceptArt2.PNG">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>  
-        
-        
-         <section id="intro" class="s2">
-            <div class="main-container" style="text-align: center;">
-                <!-- Otsikko -->
-                <h3 style="text-align: center;">Spirit Trials -audio</h3>
-                
-                <p>All these pieces were played, recorded and mixed by me. I produced the quite minimal soundtrack for this game. Character voices also by voiced and edited.</p>
-
-                <i><p>v0.6.11 soundtrack</p></i>
-                <iframe width="680" height="320"src="https://www.youtube.com/embed/UfJ1EqJz5Pg" fs="1"></iframe> 
-                
-                <i><p>v0.6.11 character dialogue</p></i>
-                <iframe width="680" height="320"src="https://www.youtube.com/embed/_6XWviKTgQM" fs="1"></iframe> 
-                
-                <i><p>v0.6.11 boss voicing</p></i>
-                <iframe width="680" height="320"src="https://www.youtube.com/embed/5-6gzfhSjV0" fs="1"></iframe> 
-                
-                <i><p>v0.3.3 soundtrack</p></i>
-                <iframe width="680" height="320"src="https://www.youtube.com/embed/y3eoo4ZrjJE" fs="1"></iframe>
-            </div>
-        </section>         
-        
-        
-        <section id="portfolio" class="s1">
-            <div class="main-container">
-                <h3 style="text-align: center;">Proto assets</h3>
-
-                <div class="gallery-post-wrapper">
-                    <!-- 1. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/mobs.PNG">
-                        </div>
-                    </div>                
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/level4.PNG">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/app_icons.PNG">
-                        </div>
-                    </div>
-                    
-                    <!-- 1.5 row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/level1.PNG">
-                        </div>
-                    </div>             
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/level3.PNG">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/level2.PNG">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        
-        <section id="portfolio" class="s2">
-            <div class="main-container">
-                <h3 style="text-align: center;">NFT story</h3>
-                
-                <p style="text-align: center;">Some cyber hustlers proposed to create an NFT marketing scheme for our new game. Long story short: the NFT bros ghosted us, because "the meta had changed" or whatever, while they were celebrating Midsummer. I don't really care or know anything about the NFT scene. Nevertheless, it was a fun project to create assets for a generator that could print out +5000 somewhat unique spirit designs.</p>
-                
-                <div class="gallery-post-wrapper">
-                    <!-- 1. row -->
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/nft1.PNG">
-                        </div>
-                    </div>                
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/nft2.PNG">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="gallery-post">
-                            <img class="gallery-image" src="images/spirit/nft3.PNG">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>  
-        
-               <section id="intro" class="s1">
-            <div class="main-container" style="text-align: center;">
-                <h5><a target="_blank" href="https://www.artstation.com/paroni">More at Artstation!</a></h5>                
-            </div>
-        </section> 
-        
-    </body>
+  <footer class="container"><p class="muted">© <span id="year2"></span> Panu Niskakoski</p></footer>
+  <script>
+    document.getElementById('year2').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links){
+      toggle.addEventListener('click', () => {
+        const open = links.getAttribute('data-open') === 'true';
+        links.setAttribute('data-open', String(!open));
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+    }
+  </script>
+</body>
 </html>
